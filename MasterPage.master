@@ -1,0 +1,210 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs"  Inherits="MasterPage" %>
+
+<%@ Register src="UserControls/ChatPanel.ascx" tagname="ChatPanel" tagprefix="uc1" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    
+    <title>MyFooBar Social Network</title>
+  
+    <link href="StyleSheet.css" rel="stylesheet" type="text/css" />
+   
+    <style type="text/css">
+        
+        body {
+                background-position:center;
+                text-align: center;                
+
+            }
+ 
+        #form1
+        {
+            top: 15px;
+            left: 10px;
+            float: left;
+            height: 19px;
+            width: 780px;
+        }
+        </style>
+</head>
+
+<body>
+    
+    <form id="form1" runat="server">
+        <div id="topContent" 
+            style="margin-top: 0px; position:fixed; z-index:+1; top: 0px; left: 0px;">
+            <div id="imgButtonFooBar" style="float:left; margin-left:50px">
+                <asp:ImageButton ID="ImageButton1" runat="server" 
+                    ImageUrl="~/images/foobarbutton.jpg" PostBackUrl="~/fooHome.aspx" />
+        </div>
+    
+    
+            <div id="imgButTopLft" style="float:right; position: absolute; z-index: +1;top:36px;
+                    left: 800px;">
+                <asp:ImageButton ID="ImageButton2" runat="server" Height="28px" 
+                    ImageUrl="~/images/fooHome.jpg" Width="85px" PostBackUrl="~/fooHome.aspx" />
+                <asp:ImageButton ID="ImageButton3" runat="server" Height="28px" 
+                    ImageUrl="~/images/fooSearch.jpg" style="margin-left: 0px" Width="85px" 
+                    PostBackUrl="~/fooSearch.aspx"/>
+                <asp:ImageButton ID="ImageButton5" runat="server" Height="28px" 
+                    ImageUrl="~/images/fooSettings.jpg" Width="85px" 
+                    PostBackUrl="~/editBasicInfo.aspx" />
+                <asp:ImageButton ID="ImageButton4" runat="server" Height="28px" 
+                    ImageUrl="~/images/fooLogout.jpg" Width="85px" 
+                        onclick="ImageButton4_Click" />
+            </div>
+        
+            <asp:ScriptManager ID="ScriptManager1" runat="server">
+            </asp:ScriptManager>
+        
+        </div>
+        
+        <div style="position:fixed; z-index:+1; top:95px; width:200%; height:10px; background-color:white; margin-left:0px; left: 0px;">
+        </div>
+        
+        <div id="midContent" style="margin-left:10px;  margin-top: 0px;float:none; width: 300px;">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">             
+            
+            </asp:ContentPlaceHolder>
+             
+        </div>
+          
+        
+        <div id="leftContent"             
+            style="width: 180px; margin-top: 55px; margin-left: 15px; float: left; z-index:-1">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                            <asp:Image ID="imgMain" runat="server" Height="204px" Width="171px" 
+                                ImageUrl="~/images/testPicMain.jpg" style="margin-top: 30px" />
+                            <br />
+            </asp:ContentPlaceHolder>
+        </div> 
+                                
+                <div id="divLeftMenu" >                                    
+                    
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+                    
+                        <asp:LinkButton ID="LinkButton1" runat="server" CssClass="sideMenuMain"
+                            PostBackUrl="~/fooProfile.aspx" >Profile</asp:LinkButton>
+                  
+                         <br />
+                         <asp:LinkButton ID="LinkButton2" runat="server" 
+                             CssClass="sideMenuMain" PostBackUrl="~/fooFriend.aspx">Friends</asp:LinkButton>
+                        
+                         <br />
+                        <asp:LinkButton ID="LinkButton3" runat="server"
+                            CssClass="sideMenuMain" PostBackUrl="~/fooPhoto.aspx">Photos</asp:LinkButton>
+                            
+                         <br />
+                        <asp:LinkButton ID="LinkButton4" runat="server" CssClass="sideMenuMain"> 
+                            Messages</asp:LinkButton>
+                        
+                         <br />
+                        
+                        <asp:LinkButton ID="LinkButton7" runat="server" 
+                            PostBackUrl="~/fooChat.aspx" CssClass="sideMenuMain">ChatRoom</asp:LinkButton>
+                                          
+                         <br />
+                   
+                    </asp:ContentPlaceHolder>
+                    <br />
+                    <uc1:ChatPanel ID="ChatPanel1" runat="server" />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                </div>
+
+   
+   <asp:ContentPlaceHolder ID="ContentPlaceHolder4" runat="server">
+         <div id="divLeft"                 
+                style=" text-align:left; border: thin solid #808080; height: 500px; width: 297px; top: 124px; position: absolute; left: 122px;">
+                <br /><br /><br />
+                <asp:Label ID="lblSettings" runat="server" Text="SETTINGS" Height="50px" 
+                    Width="280px" Font-Names="Comic Sans MS" Font-Size="X-Large" 
+                    Style="text-align:center; font-size:30px;"></asp:Label>                   
+                <br /><br />
+  
+                <table style="width: 277px">
+                    <tr>
+                        <td align="left" style="padding-left:20px;">
+                            <asp:Button ID="Button1" runat="server" BackColor="White" BorderStyle="None" 
+                                Text="Basic Information" onclick="Button1_Click" CssClass="sideMenuSetting" />
+                        </td>
+                    
+                    </tr>
+                    <tr>
+                        <td align="left" style="padding-left:20px;">
+                            <asp:Button ID="Button2" runat="server" 
+                                Text="Profile Picture" onclick="Button2_Click" 
+                                CssClass="sideMenuSetting"/>
+                        </td>
+                    
+                    </tr>
+                    
+                    <tr>
+                        <td align="left" style="padding-left:20px;">
+                            <asp:Button ID="Button10" runat="server" 
+                                Text="Cover Picture" Width="250px" onclick="Button10_Click" 
+                                CssClass="sideMenuSetting" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" style="padding-left:20px;">
+                            <asp:Button ID="Button9" runat="server"
+                                Text="Education" onclick="Button9_Click" 
+                                CssClass="sideMenuSetting" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" style="padding-left:20px;">
+                            <asp:Button ID="Button3" runat="server" 
+                                Text="Employement" Width="250px" onclick="Button3_Click" 
+                                CssClass="sideMenuSetting" />
+                        </td>                    
+                    </tr>
+                    <tr>
+                        <td align="left" style="padding-left:20px;">
+                            <asp:Button ID="Button8" runat="server" 
+                                Text="Contact Information" onclick="Button8_Click" 
+                                CssClass="sideMenuSetting" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" style="padding-left:20px;">
+                            <asp:Button ID="Button5" visible="true" runat="server"  
+                                Text="Manage Friends" onclick="Button5_Click" 
+                                CssClass="sideMenuSetting" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" style="padding-left:20px;" >
+                            <asp:Button ID="Button6" visible="true" runat="server"  
+                                Text="Manage Gallary" onclick="Button6_Click" CssClass="sideMenuSetting" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" style="padding-left:20px;" >
+                            <asp:Button ID="btnMobile" visible="true" runat="server"  
+                                Text="Mobile" onclick="btnMobile_Click" CssClass="sideMenuSetting" />
+                        </td>
+                    </tr>
+               </table>              
+               
+               
+                <br />
+                
+                <br />
+            </div>
+        </asp:ContentPlaceHolder>
+   
+   
+    <div id="divSettingsLeftMenu"> 
+    
+    
+    </div>    
+   
+    </form>
+</body>
+</html>
